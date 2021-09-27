@@ -11,27 +11,17 @@ public class Addressbookmain {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter how many contact you want to add...");
 		int con = scanner.nextInt();
+		Contacts contacts = new Contacts();
+		AddressBook addressBook = new AddressBook();
 		for (int i = 0; i < con; i++) {
-			// Adding contact details at console
-			System.out.println("Enter First Name");
-			String firstName = scanner.nextLine();
-			System.out.println("Enter Second Name");
-			String lastName = scanner.nextLine();
-			System.out.println("Enter City");
-			String city = scanner.nextLine();
-			System.out.println("Enter State");
-			String state = scanner.nextLine();
-			System.out.println("Enter zip");
-			String zip = scanner.nextLine();
-			System.out.println("Enter Phone Number");
-			String phoneNumber = scanner.nextLine();
-			System.out.println("Enter Email");
-			String email = scanner.nextLine();
-			// calling constructor through object creation.
-			Contacts c1 = new Contacts(firstName, lastName, city, state, zip, phoneNumber, email);
-			ArrayList<Contacts> list = new ArrayList<Contacts>();
-			list.add(c1);
-			System.out.println(c1);
+			// creating array list
+			ArrayList<Contacts> l1 = new ArrayList<Contacts>();
+			// adding elements in arraylist
+			l1.add(addressBook.contacts);
+			addressBook.addDetails();
+			System.out.println(l1);
+			addressBook.editContact();
+			System.out.println(l1);
 		}
 	}
 }
