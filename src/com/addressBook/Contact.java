@@ -1,37 +1,28 @@
 package com.addressBook;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+public class Contact {
 
-public class Contacts extends ContactDetails {
-	// variable declaration
 	private String firstName;
 	private String lastName;
 	private String address;
 	private String city;
 	private String state;
-	private Long zip;
-	private Long phoneNumber;
-	private String emailId;
+	private String zip;
+	private String phoneNumber;
+	private String email;
 
-	public Contacts(String firstName, String lastName, String address, String city, String state, Long zipCode,
-			Long phoneNumber, String email) {
-		super();
+	Contact(String firstName, String lastName, String address, String city, String state, String zip,
+			String phoneNumber, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.city = city;
 		this.state = state;
-		this.zip = zipCode;
+		this.zip = zip;
 		this.phoneNumber = phoneNumber;
-		this.emailId = email;
+		this.email = email;
 	}
 
-	public Contacts() {
-
-	}
-
-	// getters and setters
 	public String getFirstName() {
 		return firstName;
 	}
@@ -72,34 +63,46 @@ public class Contacts extends ContactDetails {
 		this.state = state;
 	}
 
-	public Long getZip() {
+	public String getZip() {
 		return zip;
 	}
 
-	public void setZip(Long zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
-	public Long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getEmailId() {
-		return emailId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean equals(Object object) {
+		boolean result = false;
+
+		if (object == this) {
+			return true;
+		}
+		Contact contact = (Contact) object;
+		if (contact.firstName.equals(this.firstName) && contact.lastName.equals(this.lastName)) {
+			result = true;
+		}
+		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "ContactDetails{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", address='"
-				+ address + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zip=" + zip
-				+ ", phoneNumber='" + phoneNumber + '\'' + ", emailId='" + emailId + '\'' + '}';
+		return this.getFirstName() + " " + this.getLastName() + " " + this.getAddress() + " " + this.getPhoneNumber()
+				+ " " + this.getEmail();
 	}
 }
