@@ -13,6 +13,17 @@ public class Contacts {
 	public String phoneNumber;
 	public String email;
 
+	public Contacts(String firstName, String lastName, String city, String state, String zip, String phoneNumber,
+			String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
