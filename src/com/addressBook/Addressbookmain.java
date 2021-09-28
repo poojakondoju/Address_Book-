@@ -13,6 +13,7 @@ public class Addressbookmain {
 		int con = scanner.nextInt();
 		Contacts contacts = new Contacts();
 		AddressBook addressBook = new AddressBook();
+		// adding multiple contacts at a time
 		for (int i = 0; i < con; i++) {
 			// creating array list
 			ArrayList<Contacts> l1 = new ArrayList<Contacts>();
