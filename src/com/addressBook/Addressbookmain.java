@@ -1,14 +1,10 @@
 package com.addressBook;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Addressbookmain {
-	/*
-	 * adding contact details
-	 */
+
 	public static Map<String, AddressBook> addressBookHashMap = new HashMap<>();
 	Scanner scanner = new Scanner(System.in);
 
@@ -66,6 +62,19 @@ public class Addressbookmain {
 		System.out.println(addressBookHashMap);
 	}
 
+	// Search Contact By City or State
+	public static void searchContactByCityOrState(String city, String name) {
+		List<Contact> contactList = new ArrayList<>();
+
+		for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
+			contactList = entry.getValue().getAddressBook().stream().filter(p -> p.getCity().equalsIgnoreCase(city))
+					.filter(p -> (p.getFirstName()).equals(name)).collect(Collectors.toList());
+		}
+		for (Contact contact : contactList) {
+			System.out.println("Search result: " + contact);
+		}
+	}
+
 	// MAIN METHOD
 	public static void main(String[] args) {
 		System.out
@@ -73,15 +82,16 @@ public class Addressbookmain {
 		Scanner scanner = new Scanner(System.in);
 		int choice;
 		do {
-			System.out.println(
-					"1. Add new contact" + "\n" + "2. Edit contact details" + "\n" + "3. Delete contact details" + "\n"
-							+ "4. Show Contacts " + "\n" + "5. Exit" + "\n" + "Enter your choice:");
+			System.out.println("1. Add new contact" + "\n" + "2. Edit contact details" + "\n"
+					+ "3. Delete contact details" + "\n" + "4. Search Contact by City or State " + "\n"
+					+ "5. Show Contacts" + "\n" + "6. Exit" + "\n" + "Enter your choice:");
 			choice = scanner.nextInt();
 
 			switch (choice) {
 			case 1:
-				new Addressbookmain().addDataToAddressBook(); // Add Contact Details
+				new Addressbookmain().addDataToAddressBook();
 				break;
+
 			case 2:
 				System.out.println("Enter the address book name (city)");
 				String city = scanner.next();
@@ -97,6 +107,7 @@ public class Addressbookmain {
 					}
 				}
 				break;
+
 			case 3:
 				System.out.println("Enter the address book name (city)");
 				city = scanner.next();
@@ -114,15 +125,18 @@ public class Addressbookmain {
 				break;
 
 			case 4:
-				// The singletonList() method of java.util.Collections class is used to return
-				// an immutable list containing only the specified object.
-				System.out.println(Collections.singletonList(addressBookHashMap));
-				System.out.println(Collections.singletonList(addressBookHashMap));
+				String name1;
+				System.out.println("Enter City , First Name you want to search:");
+				String city2 = scanner.next();
+				name1 = scanner.next();
+				searchContactByCityOrState(city2, name1);
+				break;
+
+			case 5:
 				for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
 					System.out.println(entry.getKey() + "\t" + entry.getValue().getAddressBook());
 				}
-				break;
 			}
-		} while (choice != 5);
+		} while (choice != 6);
 	}
 }

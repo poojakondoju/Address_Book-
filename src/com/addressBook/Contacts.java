@@ -1,8 +1,5 @@
 package com.addressBook;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Contacts extends ContactDetails {
 	// variable declaration
 	private String firstName;

@@ -87,13 +87,17 @@ public class Contact {
 		this.email = email;
 	}
 
-	public boolean equals(Object object) {
+	// Overriding equals method to compare Contact objects
+	@Override
+	public boolean equals(Object obj) {
 		boolean result = false;
 
-		if (object == this) {
+		// If the object is compared with itself then returns true
+		if (obj == this) {
 			return true;
 		}
-		Contact contact = (Contact) object;
+		Contact contact = (Contact) obj; // typecast obj to Contact so that we can compare data members
+		// Compare data members and return accordingly
 		if (contact.firstName.equals(this.firstName) && contact.lastName.equals(this.lastName)) {
 			result = true;
 		}
